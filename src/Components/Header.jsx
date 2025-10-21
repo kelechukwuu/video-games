@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import logo from "../assets/images/logo-6ec23eb2.png";
+import logo from "../assets/images/logo.png";
 import { HiOutlineSearch } from "react-icons/hi";
 import { HiMoon } from "react-icons/hi";
 import { HiOutlineSun } from "react-icons/hi";
@@ -8,9 +8,7 @@ import { ThemeContext } from "../Context/ThemeContext";
 const Header = () => {
   const [toggle, setToggle] = useState(false);
   const {theme, setTheme}=useContext(ThemeContext)
-  useEffect(()=>{
-    console.log("Theme", theme)
-  },[])
+
   return (
     <div className="flex items-center p-3 gap-2">
       <img src={logo} width={60} />

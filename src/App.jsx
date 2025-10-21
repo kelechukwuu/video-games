@@ -4,15 +4,34 @@ import Header from './Components/Header'
 import { ThemeContext } from './Context/ThemeContext'
 
 const App = () => {
-  const [theme,setTheme] = useState('Light')
+  const [theme,setTheme] = useState('dark')
+  console.log(theme)
   useEffect(()=>{
-    setTheme(localStorage.getItem('theme'))
+    setTheme(localStorage.getItem('theme') || 'dark')
   },[])
   return (
     <ThemeContext.Provider value={{theme,setTheme}}>
-    <div className={`${theme} ${theme == 'dark'? 'bg-[#121212]' : null}`}>
-      <Header/>
+    <div
+  className={`${theme} ${
+    theme === 'dark'
+      ? 'bg-[#121212] min-h-screen bg-cover bg-center h-full w-full'
+      : null
+  }`}
+  style={
+    theme === 'dark'
+      ? {
+          backgroundImage: `
+            linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+            url(/images/backgound-image.0d99efb296d85a4832e1.jpg)
+          `,
+        }
+      : {}
+  }
+>
+      <div className=' w-[80%] m-auto'>
+        <Header/>
       <Home/>
+      </div>
     </div>
     </ThemeContext.Provider>
   )
