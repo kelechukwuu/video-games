@@ -16,7 +16,7 @@ const GenreList = ({genreId,selectedGenreName}) => {
         })
     }
   return (
-    <div>
+    <div className=' sticky top-0 overflow-y-scroll'>
     <h2 className=' text-[30px] font-bold  dark:text-white'>Genre</h2>
     {
        genreList.map((item,index) => (

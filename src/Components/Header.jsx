@@ -9,8 +9,25 @@ const Header = () => {
   const [toggle, setToggle] = useState(false);
   const {theme, setTheme}=useContext(ThemeContext)
 
+    const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) { // adjust this threshold
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="flex items-center p-3 gap-2">
+    <div className= {`flex items-center p-3 gap-2 sticky top-0 w-full z-50 transition-colors duration-300 ${
+          scrolled ? "bg-gray-900 shadow-lg rounded-b-lg" : {}
+        }`}>
       <img src={logo} width={60} />
       <div className="flex bg-slate-200 p-2 w-full rounded-full items-center mx-5 gap-2">
         <HiOutlineSearch />

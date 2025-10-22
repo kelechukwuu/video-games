@@ -14,6 +14,7 @@ const Home = () => {
   useEffect(() => {
     getAllGamesList();
     getGameListByGenreId(4);
+    getGameStores(1)
   }, []);
 
 
@@ -22,20 +23,30 @@ const Home = () => {
       const result = resp.data.results
       const shuffled = [...result].sort(() => 0.5 - Math.random());
       setAllGameList(shuffled);
+
+
     });
   };
+
+  const getGameStores = (id)=>{
+      GlobalApi.getGameStores(3498).then((resp)=>{
+
+    })
+  
+  }
 
 
 
   const getGameListByGenreId = (id) => {
     GlobalApi.getGamesListByGenreId(id).then((resp) => {
       setGameListByGenreId(resp.data.results);
+
     });
   };
 
 
   return (
-    <div className=" grid grid-cols-4 px-5">
+    <div className=" grid grid-cols-5 px-5">
       <div className="h-full hidden md:block">
         <GenreList  genreId={(genreId)=> getGameListByGenreId(genreId)} selectedGenreName={(name)=> setSelectedGenreName(name)}/>
       </div>
@@ -43,14 +54,13 @@ const Home = () => {
         {allGamesList?.length > 0 ? (
           <div>
             <Banner BannerImage={allGamesList[9]} />
-            <TrendingGames gameList={allGamesList} />
           </div>
         ) : null}
         {gameListByGenreId?.length > 0 ? (
           <GamesByGenreId gameListByGenreId={gameListByGenreId} setSelectedGenreName={selectedGenreName}/>
         ) : null}
       </div>
-      <div></div>
+            {allGamesList?.length>0 ?<TrendingGames gameList={allGamesList} />:null}
     </div>
   );
 };
