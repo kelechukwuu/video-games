@@ -9,7 +9,7 @@ const axiosCreate=axios.create({
 const getGenreList=axiosCreate.get('/genres?key='+key);
 const getAllGames=axiosCreate.get('/games?key='+key);
 const getGameStores=(id)=>axiosCreate.get(`/games/${id}/stores?key=${key}`);
+const getGameMovies=(id)=>axiosCreate.get(`/games/${id}/movies?key=${key}`);
 const getGamesListByGenreId=(id)=>axiosCreate.get('/games?key='+key+'&genres='+id);
 
-
-export default{ getGenreList, getAllGames, getGamesListByGenreId,getGameStores}
+export default{ getGenreList, getAllGames, getGamesListByGenreId,getGameStores,getGameMovies}
