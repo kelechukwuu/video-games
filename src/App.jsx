@@ -1,60 +1,64 @@
 import React, { useEffect, useState } from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Route,
+} from "react-router-dom";
 import Home from "./Pages/Home";
-import Header from "./Components/Header";
-import { ThemeContext } from "./Context/ThemeContext";
+import GameDetails from "./Pages/GameDetails"
+import MainLayout from "./Layout/MainLayout";
 import GlobalApi from "./Services/GlobalApi";
+import SignIn from "./Pages/SignIn";
+import SignUp from "./Pages/SignUp";
 
 const App = () => {
   const [theme, setTheme] = useState("dark");
+
   const [gameListByGenreId, setGameListByGenreId] = useState();
-  
+
   useEffect(() => {
     setTheme(localStorage.getItem("theme") || "dark");
     getGameListByGenreId(4);
-
   }, []);
-
-  
-const getGameListByGenreId = (id) => {
+  const getGameListByGenreId = (id) => {
     GlobalApi.getGamesListByGenreId(id)
-    .then((resp) => {
-      setGameListByGenreId(resp.data.results);
-
-    })
-    .catch((error)=> console.log(error))
-  }
-
-
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      <div
-        className={`${theme} ${
-          theme === "dark"
-            ? "bg-[#121212] min-h-screen bg-cover bg-center h-full w-full"
-            : "bg-cover bg-center h-full w-full"
-        }`}
-        style={
-          theme === "dark"
-            ? {
-                backgroundImage: `
-            linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-            url(${gameListByGenreId?.length > 0 ?gameListByGenreId[2].background_image : null})
-          `,
-              }
-            : {
-                backgroundImage: `
-                linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),            
-                url(${gameListByGenreId?.length > 0 ?gameListByGenreId[2].background_image : null})`,
-              }
+      .then((resp) => {
+        setGameListByGenreId(resp.data.results);
+      })
+      .catch((error) => console.log(error));
+  };
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route
+        path="/"
+        element={
+          <MainLayout
+            theme={theme}
+            setTheme={setTheme}
+            gameListByGenreId={gameListByGenreId}
+          />
         }
       >
-        <div className=" w-[80%] m-auto">
-          <Header />
-          <Home GlobalApi={GlobalApi} gameListByGenreId={gameListByGenreId} setGameListByGenreId={setGameListByGenreId} getGameListByGenreId={getGameListByGenreId}/>
-        </div>
-      </div>
-    </ThemeContext.Provider>
+        <Route
+          index
+          element={
+            <Home
+              GlobalApi={GlobalApi}
+              gameListByGenreId={gameListByGenreId}
+              setGameListByGenreId={setGameListByGenreId}
+              getGameListByGenreId={getGameListByGenreId}
+            />
+          }
+        />
+        <Route path="game-details/:id" element={<GameDetails/>} />
+        <Route path="*" element={<div>Page Not Found</div>} />
+        <Route path="login" element={<SignIn/>} />
+        <Route path="register" element={<SignUp/>} />
+      </Route>
+    )
   );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

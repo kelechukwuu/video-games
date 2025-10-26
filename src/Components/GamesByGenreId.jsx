@@ -41,7 +41,7 @@ const GamesByGenreId = ({ gameListByGenreId, setSelectedGenreName, GlobalApi }) 
         </h2>
       </div>
 
-      <button onClick={()=> { getGameMovies(i.id)}} className=" px-3 py-1 bg-blue-950 text-white rounded mt-3 bg-radial-[at_50%_75%] from-blue-400 via-indigo-900 to-90%">
+      <button onClick={()=> { getGameMovies(i.id)}} className=" px-3 py-1  text-white rounded mt-3  bg-gray-900">
         Watch Trailer
       </button>
     </div>
