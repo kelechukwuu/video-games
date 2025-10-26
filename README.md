@@ -30,8 +30,8 @@ Users can explore games by genre, view details, ratings, and screenshots — all
 Follow these steps to clone and run the project locally:
 
 ### 1️⃣ Clone the repository
-
 after cloning, simply run
-# npm i 
+```bash
+npm i
+```
 This is to install all dependencies.
-
