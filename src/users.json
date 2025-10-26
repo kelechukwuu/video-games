@@ -2,25 +2,6 @@
   "users": [
     {
       "id": "34ff"
-    },
-    {
-      "id": "2464",
-      "email": "stan@mai.com",
-      "password": "ffff",
-      "pwd": ""
-    },
-    {
-      "id": "77f2",
-      "email": "dfdf@mai.com",
-      "password": "ff"
-    },
-    {
-      "id": "f8ac",
-      "email": "magnus@mail.com",
-      "password": "Aaaaaaaa1!",
-      "phone": "1209890988",
-      "name": "Magnus Abe",
-      "cpassword": "Aaaaaaaa1!"
     }
   ]
 }

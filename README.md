@@ -1,16 +1,37 @@
-# React + Vite
+# Video Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive **video game discovery website** built with React and powered by the [RAWG.io API](https://rawg.io/apidocs).  
+Users can explore games by genre, view details, ratings, and screenshots — all with a modern, dynamic interface.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- 🔍 Browse popular and trending games  
+- 🎮 Filter games by genre or platform  
+- ⭐ View detailed game information (ratings, reviews, screenshots, etc.)  
+- 🧩 Powered by **RAWG.io API**  
+- 📱 Fully responsive with **Tailwind CSS**  
+- ⚡ Built using **React + Vite**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** React, Tailwind CSS  
+- **API:** [RAWG.io REST API](https://rawg.io/apidocs)  
+- **Build Tool:** Vite  
+- **Package Manager:** npm  
+
+---
+
+## 📦 Installation & Setup
+
+Follow these steps to clone and run the project locally:
+
+### 1️⃣ Clone the repository
+
+after cloning, simply run
+# npm i 
+This is to install all dependencies.
+
